@@ -9,7 +9,8 @@ import io from 'socket.io-client';
 import { socialLinks as socialData } from '../data/data';
 
 // Connect to the socket server
-const socket = io('http://localhost:3001');
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3001';
+const socket = io(BACKEND_URL);
 
 const Contact = () => {
   const [formState, setFormState] = useState('idle'); // idle, sending, success, error
