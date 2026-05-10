@@ -32,8 +32,9 @@ const transporter = nodemailer.createTransport({
     pass: process.env.EMAIL_PASS,
   },
   tls: {
-    rejectUnauthorized: false // Helps with connection issues
-  }
+    rejectUnauthorized: false
+  },
+  family: 4 // Force IPv4
 });
 
 io.on('connection', (socket) => {
