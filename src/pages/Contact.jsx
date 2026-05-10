@@ -10,7 +10,11 @@ import { socialLinks as socialData } from '../data/data';
 
 // Connect to the socket server
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3001';
-const socket = io(BACKEND_URL);
+console.log('Connecting to backend at:', BACKEND_URL);
+const socket = io(BACKEND_URL, {
+  transports: ['websocket', 'polling'],
+  withCredentials: true
+});
 
 const Contact = () => {
   const [formState, setFormState] = useState('idle'); // idle, sending, success, error
@@ -22,6 +26,14 @@ const Contact = () => {
   });
 
   useEffect(() => {
+    socket.on('connect', () => {
+      console.log('Successfully connected to socket server!');
+    });
+
+    socket.on('connect_error', (error) => {
+      console.error('Socket connection error:', error);
+    });
+
     // Listen for email status from server
     socket.on('email_status', (data) => {
       if (data.success) {
