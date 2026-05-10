@@ -24,11 +24,16 @@ const io = new Server(httpServer, {
 // Configure Nodemailer
 // IMPORTANT: You need to set these in a .env file
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  host: 'smtp.gmail.com',
+  port: 587,
+  secure: false, // Use STARTTLS
   auth: {
     user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS, // Use App Password for Gmail
+    pass: process.env.EMAIL_PASS,
   },
+  tls: {
+    rejectUnauthorized: false // Helps with connection issues
+  }
 });
 
 io.on('connection', (socket) => {
