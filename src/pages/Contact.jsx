@@ -5,16 +5,8 @@ import AnimatedText from '../components/AnimatedText';
 import CharAnimatedText from '../components/CharAnimatedText';
 import { FiSend, FiGithub, FiLinkedin, FiTwitter, FiMail, FiCheckCircle, FiInstagram } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa';
-import io from 'socket.io-client';
+import emailjs from '@emailjs/browser';
 import { socialLinks as socialData } from '../data/data';
-
-// Connect to the socket server
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3001';
-console.log('Connecting to backend at:', BACKEND_URL);
-const socket = io(BACKEND_URL, {
-  transports: ['websocket', 'polling'],
-  withCredentials: true
-});
 
 const Contact = () => {
   const [formState, setFormState] = useState('idle'); // idle, sending, success, error
@@ -26,27 +18,7 @@ const Contact = () => {
   });
 
   useEffect(() => {
-    socket.on('connect', () => {
-      console.log('Successfully connected to socket server!');
-    });
-
-    socket.on('connect_error', (error) => {
-      console.error('Socket connection error:', error);
-    });
-
-    // Listen for email status from server
-    socket.on('email_status', (data) => {
-      if (data.success) {
-        setFormState('success');
-      } else {
-        setFormState('error');
-        alert('Failed to send message. Please check your connection or try again later.');
-      }
-    });
-
-    return () => {
-      socket.off('email_status');
-    };
+    // No longer using socket connection for emails
   }, []);
 
   const handleChange = (e) => {
@@ -60,8 +32,27 @@ const Contact = () => {
     e.preventDefault();
     setFormState('sending');
     
-    // Emit the message details via socket
-    socket.emit('send_email', formData);
+    // EmailJS Configuration
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      to_name: 'Vinayak',
+      message: formData.message,
+    };
+
+    emailjs.send(serviceId, templateId, templateParams, publicKey)
+      .then((response) => {
+        console.log('SUCCESS!', response.status, response.text);
+        setFormState('success');
+      }, (err) => {
+        console.log('FAILED...', err);
+        setFormState('error');
+        alert('Failed to send message. Please try again or email me directly.');
+      });
   };
 
   const copyEmail = () => {
