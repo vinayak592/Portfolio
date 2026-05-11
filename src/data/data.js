@@ -68,63 +68,6 @@ export const projects = [
   },
 ];
 
-// ===== ARTICLES DATA =====
-export const articles = [
-  {
-    id: 1,
-    title: 'Build A Custom Pagination Component In ReactJS From Scratch',
-    date: 'March 22, 2025',
-    readTime: '9 min read',
-    category: 'React',
-    summary: 'Learn how to build a custom pagination component from scratch in ReactJS with clean, reusable code and smooth animations.',
-    content: 'Pagination is one of those components that seems simple but can get complex quickly. In this article, we will build a fully custom pagination component that handles edge cases gracefully...',
-  },
-  {
-    id: 2,
-    title: 'Creating Stunning Loading Screens In React: Build 3 Types Of Loading Screens',
-    date: 'March 15, 2025',
-    readTime: '10 min read',
-    category: 'React',
-    summary: 'Explore three different approaches to creating beautiful loading screens that keep users engaged.',
-    content: 'Loading screens are often overlooked, but they are crucial for user experience. A well-designed loading screen can reduce perceived wait time significantly...',
-  },
-  {
-    id: 3,
-    title: 'Form Validation In ReactJS: Build A Reusable Custom Hook For Inputs And Error Handling',
-    date: 'March 8, 2025',
-    readTime: '12 min read',
-    category: 'React',
-    summary: 'Create a powerful, reusable form validation hook that handles complex validation rules with ease.',
-    content: 'Form validation is a critical part of any web application. In this guide, we will create a custom hook that makes form handling a breeze...',
-  },
-  {
-    id: 4,
-    title: 'Mastering Tailwind CSS: Advanced Techniques For Modern Web Design',
-    date: 'February 28, 2025',
-    readTime: '8 min read',
-    category: 'CSS',
-    summary: 'Deep dive into advanced Tailwind CSS techniques including custom plugins, design tokens, and performance optimization.',
-    content: 'Tailwind CSS has revolutionized how we write CSS. But beyond the basics, there are powerful advanced techniques that can take your designs to the next level...',
-  },
-  {
-    id: 5,
-    title: 'Building Scalable APIs With Node.js And Express: A Complete Guide',
-    date: 'February 20, 2025',
-    readTime: '15 min read',
-    category: 'Backend',
-    summary: 'A comprehensive guide to building production-ready APIs with proper architecture, authentication, and error handling.',
-    content: 'Building APIs that scale requires careful planning and architecture decisions. In this guide, we cover everything from project setup to deployment...',
-  },
-  {
-    id: 6,
-    title: 'The Art Of Micro-Animations: Making Your UI Feel Alive',
-    date: 'February 12, 2025',
-    readTime: '7 min read',
-    category: 'Design',
-    summary: 'Learn how subtle animations can dramatically improve user experience and make your interface feel premium.',
-    content: 'Micro-animations are the secret ingredient that separates good interfaces from great ones. They provide feedback, guide attention, and create delight...',
-  },
-];
 
 // ===== SKILLS DATA =====
 export const skills = [

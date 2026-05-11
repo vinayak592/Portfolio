@@ -14,8 +14,7 @@ import { ThemeProvider, useTheme } from './context/ThemeContext';
 const Home = lazy(() => import('./pages/Home'));
 const About = lazy(() => import('./pages/About'));
 const Projects = lazy(() => import('./pages/Projects'));
-const Articles = lazy(() => import('./pages/Articles'));
-const ArticleDetail = lazy(() => import('./pages/ArticleDetail'));
+
 const Contact = lazy(() => import('./pages/Contact'));
 const Services = lazy(() => import('./pages/Services'));
 
@@ -50,8 +49,6 @@ function AppContent() {
                       <Route path="/" element={<Home />} />
                       <Route path="/about" element={<About />} />
                       <Route path="/projects" element={<Projects />} />
-                      <Route path="/articles" element={<Articles />} />
-                      <Route path="/articles/:id" element={<ArticleDetail />} />
                       <Route path="/contact" element={<Contact />} />
                       <Route path="/services" element={<Services />} />
                     </Routes>
